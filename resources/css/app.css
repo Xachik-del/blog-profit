@@ -1,0 +1,35 @@
+body {
+ font-family: Inter, sans-serif !important;
+}
+
+
+.description {
+    font-weight: 600;
+
+    span {
+        color: #027BFF !important;
+    }
+
+
+    blockquote {
+        margin: 30px 0;
+        background-color: #027BFF;
+        border-radius: 20px;
+        padding: 10px 20px;
+        color: white;
+        position: relative;
+    }
+
+    blockquote::before {
+        content: url("../../public/images/quotes-start.svg");
+        position: absolute;
+        top: -30px;
+        left: -30px;
+    }
+    blockquote::after {
+        content: url("../../public/images/quotes-end.svg");
+        position: absolute;
+        bottom: -30px;
+        right: -30px;
+    }
+}
