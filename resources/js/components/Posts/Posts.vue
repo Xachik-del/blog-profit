@@ -43,7 +43,7 @@ import axios from 'axios';
 const posts = ref([]);
 const currentPage = ref(1);
 const hasMorePosts = ref(true);
-const limit = 1;
+const limit = 5;
 const currentCategory = ref(null);
 const searchQuery = ref('');
 

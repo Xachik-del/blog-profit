@@ -20,7 +20,9 @@ return new class extends Migration
                 ->references('id')
                 ->on('categories');
             $table->string('title');
+            $table->string('sub_title')->nullable();
             $table->text('description');
+            $table->text('sub_description')->nullable();
             $table->integer('views')->default(0);
             $table->string('image')->nullable();
             $table->timestamps();

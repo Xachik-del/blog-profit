@@ -30,9 +30,9 @@
                 </div>
 
                 <div class="description">
-                    <span>
+                    <p>
                         {{ post.description }}
-                    </span>
+                    </p>
                 </div>
             </div>
         </div>

@@ -32,9 +32,10 @@ class PostResource extends Resource
         return $form
         ->schema([
             TextInput::make('title')->required(),
-//            MarkdownEditor::make('description')
+            TextInput::make('sub_title'),
             RichEditor::make('description')
                 ->required(),
+            TextInput::make('sub_description'),
             TextInput::make('views')->numeric(),
             FileUpload::make('image')
                 ->directory('uploads')  // Указываем директорию для загрузки
@@ -52,7 +53,9 @@ class PostResource extends Resource
                 TextColumn::make('id')->sortable(),
                 TextColumn::make('user.name')->label('User'),
                 TextColumn::make('title')->sortable()->searchable(),
+                TextColumn::make('sub_title')->sortable()->searchable(),
                 TextColumn::make('description')->limit(50),
+                TextColumn::make('sub_description')->limit(50),
                 TextColumn::make('views')->sortable(),
                 ImageColumn::make('image')
                     ->label('Image')
