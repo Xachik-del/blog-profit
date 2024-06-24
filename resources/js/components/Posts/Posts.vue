@@ -11,8 +11,7 @@
         <div class="filters">
             <ul class="d-flex justify-content-between text-light">
                 <li @click="filterPosts(null)">Все</li>
-                <li @click="filterPosts(1)">Полезное</li>
-                <li @click="filterPosts(2)">Развлекательное</li>
+                <li v-for="category in categories" :key="category.id" @click="filterPosts(category.id)">{{ category.name }}</li>
             </ul>
 
             <div class="search">
@@ -41,11 +40,21 @@ import router from "@/router";
 import axios from 'axios';
 
 const posts = ref([]);
+const categories = ref([]);
 const currentPage = ref(1);
 const hasMorePosts = ref(true);
 const limit = 5;
 const currentCategory = ref(null);
 const searchQuery = ref('');
+
+const fetchCategories = async () => {
+    try {
+        const response = await axios.get('/api/category');
+        categories.value = response.data;
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+    }
+};
 
 const fetchPosts = async (page = 1, category = '', query = '') => {
     try {
@@ -89,8 +98,13 @@ const loadMore = () => {
     }
 };
 
-onMounted(fetchPosts);
+onMounted(() => {
+    fetchPosts();
+    fetchCategories();
+});
+
 </script>
+
 <style scoped lang="scss">
 .main-title {
     margin-top: 7rem;
@@ -113,8 +127,11 @@ onMounted(fetchPosts);
         justify-content: space-between;
 
         ul {
-            width: 350px;
             list-style: none;
+
+            li {
+                margin-right: 40px;
+            }
 
             li:hover {
                 list-style: disc;

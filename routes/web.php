@@ -1,7 +1,8 @@
 <?php
 
+use Filament\Facades\Filament;
+use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{any}', function () {
-    return view('welcome');
-})->where('any', '.*');
+//Route::get('/{any}', function () {
+//    return view('welcome');
+//})->where('any', '.*');
